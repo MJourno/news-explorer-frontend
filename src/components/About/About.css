@@ -1,0 +1,60 @@
+/* a presentational component that displays information about the author */
+.about {
+  background-color: #ffffff;
+  padding: 80px 104px;
+  width: calc(100% - 104px * 2);
+  position: static;
+}
+
+.about__container {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.about__image {
+  border-radius: 50%;
+  width: 464px;
+  height: 464px;
+  margin: 0;
+  padding: 0;
+}
+
+.about__text-container {
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  margin-left: 56px;
+  margin-right: 112px;
+}
+
+.about__title {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  text-align: left;
+  margin: 51px 0 24px 0;
+}
+
+.about__text {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  text-align: left;
+  margin: 0 0 24px 0;
+
+}
+@media screen and (max-width: 700px) {
+  .about {
+    margin: 32px 0 0 0;
+  }
+  .about__container {
+    flex-direction: column;
+  }}

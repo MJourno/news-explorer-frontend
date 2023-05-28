@@ -1,0 +1,6 @@
+/* the components of the main page and the page with saved cards */
+.savedNews {
+  background-color: #FFFFFF;
+  width: calc(100% - 104px * 2);
+  padding: 62px 104px;
+}

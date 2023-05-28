@@ -1,0 +1,46 @@
+.searchResults {
+  background-color: #F5F6F7;
+  padding: 80px 104px;
+  width: calc(100% - 104px * 2);
+}
+
+.searchResults____container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.searchResults__title {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  margin: 0;
+  margin-bottom: 64px;
+}
+
+.searchResults__showMore {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  width: 288px;
+  height: 64px;
+  background-color: #E8E8E8;
+  margin: auto;
+  margin-top: 64px;
+}
+
+.searchResults__showMore:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,42 @@
+/* responsible for the not-found */
+.notFound {
+  position: relative;
+  background-color: #F5F6F7;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notFound__icon {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 82.5px;
+  height: 82.5px;
+  background-image: url(../../images/not-found_v1.png);
+}
+
+.notFound__title {
+  margin: 0;
+  margin-top: 31.5px;
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: #1A1B22;
+}
+
+.notFound__text {
+  margin: 0;
+  margin-top: 16px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #B6BCBF;
+}

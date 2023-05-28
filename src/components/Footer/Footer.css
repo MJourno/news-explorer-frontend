@@ -1,0 +1,55 @@
+/* a presentational component that renders the footer */
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin: 28px 104px 26px;
+  justify-content: space-between;
+  position: static;
+}
+
+.footer__copyright {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #B6BCBF;
+  align-items: flex-end;
+}
+
+.footer__container {
+  display: flex;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #1A1B22;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  min-width: 112px;
+
+}
+
+.footer__icons {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 16px;
+  padding: 0;
+}
+
+.footer__icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 24px;
+}

@@ -1,0 +1,12 @@
+/* the components of the main page and the page with saved cards */
+.main {
+  max-width: 100%;
+  margin: 0px auto 0px;
+  position: static
+}
+
+/* @media screen and (max-width:879px){
+  .main {
+    margin: 0px 19px 0px;
+  }
+} */

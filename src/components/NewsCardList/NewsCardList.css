@@ -1,0 +1,13 @@
+/* the component that controls the rendering of cards on pages and their amount */
+
+.newsCardList__cards-grid {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+  width: 100%;
+  list-style: none;
+  justify-items: center;
+  padding: 0;
+}

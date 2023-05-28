@@ -1,0 +1,37 @@
+/* displays information about the number of saved cards and about the related requests to the "Saved articles" page */
+.savedNewsHeader {
+  background-color: #E5E5E5;
+  width: calc(100% - 104px * 2);
+  padding: 40px 104px 56px 104px;
+}
+
+.savedNewsHeader__title {
+  margin: 0px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.savedNewsHeader__text {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  margin-top: 28px;
+}
+
+.savedNewsHeader__byKey {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  margin: 0;
+  margin-top: 30px;
+}
