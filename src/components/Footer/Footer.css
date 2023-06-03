@@ -1,8 +1,9 @@
 /* a presentational component that renders the footer */
+
 .footer {
   display: flex;
   flex-direction: row;
-  margin: 28px 104px 26px;
+  margin: 32px 104px 26px;
   justify-content: space-between;
   position: static;
 }
@@ -10,11 +11,13 @@
 .footer__copyright {
   font-family: 'Roboto';
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
   color: #B6BCBF;
-  align-items: flex-end;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .footer__container {
@@ -25,7 +28,8 @@
   list-style: none;
   padding: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  margin: 0;
 }
 
 .footer__link {
@@ -36,20 +40,88 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-  min-width: 112px;
+  margin: 0;
+  padding: 0;
+}
 
+.footer__link-item:nth-of-type(2) {
+  margin-left: 40px;
+  margin-right: 14px;
 }
 
 .footer__icons {
   list-style: none;
   display: flex;
-  align-items: flex-start;
-  margin-left: 16px;
+  align-items: center;
+  margin: 0;
   padding: 0;
 }
 
 .footer__icon {
   width: 20px;
   height: 20px;
-  margin-left: 24px;
+  margin-left: 28px;
+}
+
+
+@media screen and (max-width: 1439px) {
+
+  .footer {
+    margin: 21px 40px 18px;
+  }
+
+  .footer__icon {
+    width: 22px;
+    height: 22px;
+    margin-left: 27px;
+  }
+
+  .footer__link-item:nth-of-type(2) {
+    margin-right: 15px;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  .footer {
+    flex-direction: column-reverse;
+    margin: 20px 16px 22px;
+  }
+
+  .footer__copyright {
+    align-self: center;
+    width: fit-content;
+    }
+  .footer__container {
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 38px;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 74px;
+    width: 200px;
+    margin-right: 18px;
+  }
+
+  .footer__link-item:nth-of-type(2) {
+    margin:0px;
+  }
+
+  .footer__icons {
+    margin: 0 2px 0 0;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 76px;
+    justify-content: space-between;
+  }
+
+  .footer__icon {
+    margin:0px;
+  }
+
 }

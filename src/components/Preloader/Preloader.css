@@ -9,6 +9,9 @@
 }
 
 .preloader__spin {
+  text-decoration-style: none;
+  border:0px;
+  outline:none;
   display: block;
   background-repeat: no-repeat;
   background-size: cover;

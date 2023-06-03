@@ -1,6 +1,5 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 
 function Login(props) {
   const [email, setEmail] = useState('');
@@ -11,33 +10,38 @@ function Login(props) {
     props.onSignin({ email, password });
   }
 
-  return(
-<PopupWithForm
-    name="login"
-    title="Sign in"
-    value="Sign in"
-    onSubmit={handleSubmit}
-  >
-    <h5>Email</h5>
-    <input
-    //  className="form__input"
-     placeholder="Enter email"
-     type="email"
-     required
-     value={email}
-     onChange={(e) => setEmail(e.target.value)}
-    />
-    <h5>Password</h5>
-    <input
-    // className="form__input"
-    placeholder="Enter password"
-    type="password"
-    required
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    />
-  </PopupWithForm>
+  return (
+    <PopupWithForm
+      name="login"
+      title="Sign in"
+      value="Sign in"
+      switchText="Sign up"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      onSubmit={handleSubmit}
+      handleDifferentPopup={props.handleDifferentPopup}
+    >
+      <h5 className="popup__subtitle">Email</h5>
+      <input
+        className="popup__input"
+        placeholder="Enter email"
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <span className="popup__input_type_error"></span>
+      <h5 className="popup__subtitle">Password</h5>
+      <input
+        className="popup__input" placeholder="Enter password"
+        type="password"
+        required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <span className="popup__input_type_error"></span>
+    </PopupWithForm>
   )
-  
+
 }
 export default Login;

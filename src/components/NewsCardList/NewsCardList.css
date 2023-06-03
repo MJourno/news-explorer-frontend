@@ -11,3 +11,34 @@
   justify-items: center;
   padding: 0;
 }
+
+@media screen and (max-width: 1439px) {
+
+  .newsCardList__cards-grid {
+    column-gap: 8px;
+    row-gap: 8px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+
+  .newsCardList__cards-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 915px) {
+
+  .newsCardList__cards-grid {
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+}

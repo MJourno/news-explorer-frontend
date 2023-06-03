@@ -1,7 +1,7 @@
 function NotFound() {
   return (
     <div className="notFound">
-      <image className="notFound__icon" />
+      <i className="notFound__icon" />
       <h3 className="notFound__title">
         Nothing found
       </h3>

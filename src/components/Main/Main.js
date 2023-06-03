@@ -1,23 +1,34 @@
 // import React, { useState } from 'react';
 import About from '../About/About'
 import SearchForm from '../SearchForm/SearchForm'
-import Preloader from '../Preloader/Preloader';
-import NotFound from '../NotFound/NotFound';
+// import Preloader from '../Preloader/Preloader';
+// import NotFound from '../NotFound/NotFound';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import SavedNews from '../SavedNews/SavedNews';
 import SearchResults from '../SearchResults/SearchResults';
 
-function Main() {
+function Main({ isLoggedIn, isInHomepage}) {
   return (
-    <div className="main">
+    <main className="main">
       <SearchForm />
-      <Preloader />
-      <NotFound />
-      <SavedNewsHeader />
-      <SavedNews />
-      <SearchResults />
+      {/* <Preloader />
+      <NotFound /> */}
+      {
+        !isLoggedIn ?
+          <>
+            <SavedNewsHeader />
+            <SavedNews
+            isInHomepage={isInHomepage}            
+            />
+          </>
+          :
+          ''
+      }
+      <SearchResults 
+      isInHomepage={isInHomepage}
+      />
       <About />
-    </div>
+    </main>
   );
 }
 export default Main;

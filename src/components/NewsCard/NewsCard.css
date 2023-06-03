@@ -8,14 +8,41 @@
   color: #1A1B22;
   display: flex;
   flex-direction: column;
-  border-radius: 10%;
+}
+
+.trash {
+  background-image: url(../../images/trash._normal.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.trash:hover {
+  background-image: url(../../images/trash_hover.svg);
+}
+
+.bookmark {
+  background-image: url(../../images/bookmark_normal.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.bookmark:hover {
+  background-image: url(../../images/bookmark_hover.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
 }
 
 .NewsCard__img-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width:calc(100% - 24*2);
+  width: calc(100% - 24px * 2);
   height: 40px;
   margin: 24px 24px auto;
 }
@@ -75,23 +102,12 @@
   outline: none;
 }
 
-.newsCard__img-icon {
-  height: 40px;
-  width: 40px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
 .NewsCard__text-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: calc(100% - 24*2);
   height: 304px;
-  overflow: hidden;
   background-color: #ffffff;
   margin: 17px 24px 24px 24px;
 }
@@ -136,4 +152,60 @@
   text-transform: uppercase;
   color: #B6BCBF;
   margin: 0px;
+}
+
+@media screen and (max-width: 1439px) {
+  .newsCard {
+    height: 420px;
+    width: 224px;
+  }
+
+  .NewsCard__img {
+    height: 150px;
+  }
+
+  .NewsCard__img-container {
+    width: calc(100% - 8px * 2);
+    height: 40px;
+    margin: 8px 8px auto;
+  }
+
+  .newsCard__keyword-button {
+    font-size: 14px;
+    line-height: 24px;
+    padding: 8px 20px;
+  }
+
+  .NewsCard__text-container {
+    width: calc(100% - 16*2);
+    height: 270px;
+    margin: 16px 16px;
+  }
+
+  .NewsCard__text-title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .newsCard {
+    height: 440px;
+    width: 288px;
+  }
+
+  .NewsCard__img {
+    height: 196px;
+  }
+
+  .NewsCard__img-container {
+    width: calc(100% - 16px * 2);
+    height: 40px;
+    margin: 16px 16px auto;
+  }
+
+  .NewsCard__text-container {
+    height: 244px;
+  }
+
 }

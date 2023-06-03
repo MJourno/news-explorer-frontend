@@ -1,24 +1,52 @@
-import React from "react";
+import React, { useState } from 'react';
 import normalTrash from '../../images/trash._normal.svg';
-// import hoverTrash from '../../images/trash_hover.svg';
-// import normalBookMark from '../../images/bookmark_normal.svg';
-// import hoverBookMark from '../../images/bookmark_hover.svg';
-// import markedBookMark from '../../images/bookmark_marked.png';
+import hoverTrash from '../../images/trash_hover.svg';
+import normalBookMark from '../../images/bookmark_normal.svg';
+import hoverBookMark from '../../images/bookmark_hover.svg';
+import markedBookMark from '../../images/bookmark_marked.png';
 
-function NewsCard() {
+function NewsCard({ isInHomepage }) {
+  const [isShown, setIsShown] = useState(false);
+
+  function enterMoouse() {
+    setIsShown(true);
+  }
+  function leaveMoouse() {
+    setIsShown(false);
+  }
+
   return (
     <li className='newsCard'>
       <div className='NewsCard__img'>
         <div className='NewsCard__img-container'>
           <button className='newsCard__keyword-button'>Nature</button>
           <div className="NewsCard__button-container">
-          <span className="newsCard__tooltip">Remove from saved</span>
-          <button className='newsCard__img-icon newsCard__img-delete'>
-            <img src={normalTrash} alt="Remove from saved" />
-          </button>
+            {
+              isShown && (<span className="newsCard__tooltip">{isInHomepage ? 'Remove from saved' : 'Sign in to save articles'}</span>)
+            }
+            {
+              isInHomepage ?
+                <button
+                  className='newsCard__img-icon newsCard__img-delete'
+                  onMouseEnter={enterMoouse}
+                  onMouseLeave={leaveMoouse}
+                >
+                  <img src={normalTrash} alt="Remove from saved" />
+                </button>
+                :
+                <button
+                  className='newsCard__img-icon newsCard__img-delete'
+                  onMouseEnter={enterMoouse}
+                  onMouseLeave={leaveMoouse}
+                >
+                  <img src={normalBookMark} alt="Sign in to save articles" />
+                </button>
+
+            }
+
           </div>
-          
-          
+
+
           {/* <button className="newsCard__img-icon newsCard__img-save"> */}
           {/* <img src={normalBookMark} alt="Sign in to save articles"/> */}
           {/* </button> */}

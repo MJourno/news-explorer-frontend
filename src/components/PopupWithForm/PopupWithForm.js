@@ -1,4 +1,15 @@
+import { Link } from 'react-router-dom';
+
 function PopupWithForm(props) {
+
+  function openDifferentPopup() {
+    console.log('openDifferentPopup1');
+    props.onClose();
+    props.handleDifferentPopup();
+
+  }
+
+  return(
   <div className={`popup popup_type_${props.name}
   ${props.isOpen ? "popup_is-open" : ""
     }`}>
@@ -23,9 +34,10 @@ function PopupWithForm(props) {
           className="popup__save">
           {props.value}
         </button>
-        <p></p>
+        <p className='popup__redirect-text'>or <Link className='popup__redirect-link' onClick={openDifferentPopup}>{props.switchText}</Link></p>
       </form>
     </div>
   </div>
+  )
 }
 export default PopupWithForm;
