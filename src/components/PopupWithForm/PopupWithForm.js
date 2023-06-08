@@ -10,7 +10,7 @@ function PopupWithForm(props) {
   }
 
   return(
-  <div className={`popup popup_type_${props.name}
+  <dialog  className={`popup popup_type_${props.name}
   ${props.isOpen ? "popup_is-open" : ""
     }`}>
     <div className={`popup__container popup__container-${props.name}`}>
@@ -37,7 +37,7 @@ function PopupWithForm(props) {
         <p className='popup__redirect-text'>or <Link className='popup__redirect-link' onClick={openDifferentPopup}>{props.switchText}</Link></p>
       </form>
     </div>
-  </div>
+  </dialog >
   )
 }
 export default PopupWithForm;

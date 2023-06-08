@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import normalTrash from '../../images/trash._normal.svg';
-import hoverTrash from '../../images/trash_hover.svg';
+// import hoverTrash from '../../images/trash_hover.svg';
 import normalBookMark from '../../images/bookmark_normal.svg';
-import hoverBookMark from '../../images/bookmark_hover.svg';
-import markedBookMark from '../../images/bookmark_marked.png';
+// import hoverBookMark from '../../images/bookmark_hover.svg';
+// import markedBookMark from '../../images/bookmark_marked.png';
 
 function NewsCard({ isInHomepage }) {
   const [isShown, setIsShown] = useState(false);
@@ -41,12 +41,8 @@ function NewsCard({ isInHomepage }) {
                 >
                   <img src={normalBookMark} alt="Sign in to save articles" />
                 </button>
-
             }
-
           </div>
-
-
           {/* <button className="newsCard__img-icon newsCard__img-save"> */}
           {/* <img src={normalBookMark} alt="Sign in to save articles"/> */}
           {/* </button> */}

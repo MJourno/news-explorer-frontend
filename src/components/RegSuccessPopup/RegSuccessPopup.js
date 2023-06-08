@@ -10,7 +10,7 @@ function RegSuccessPopup(props) {
   }
 
   return (
-    <div className={`popup popup_type_${props.name}
+    <dialog className={`popup popup_type_${props.name}
       ${props.isOpen ? "popup_is-open" : ""
       }`}>
       <div className={`popup__container popup__container-${props.name}`}>
@@ -28,7 +28,7 @@ function RegSuccessPopup(props) {
           <p><Link className='popup__reg-link' onClick={openDifferentPopup}>Sign in</Link></p>
         </form>
       </div>
-    </div>
+    </dialog>
   )
 }
 

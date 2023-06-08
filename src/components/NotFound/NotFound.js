@@ -1,6 +1,6 @@
 function NotFound() {
   return (
-    <div className="notFound">
+    <section className="notFound">
       <i className="notFound__icon" />
       <h3 className="notFound__title">
         Nothing found
@@ -9,7 +9,7 @@ function NotFound() {
         Sorry, but nothing matched <br/>
         your search terms.
       </p>
-    </div>
+    </section>
   )
 }
 export default NotFound;

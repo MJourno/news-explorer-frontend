@@ -1,5 +1,3 @@
-/* the component that controls the rendering of cards on pages and their amount */
-
 .newsCardList__cards-grid {
   margin: 0px;
   display: grid;
@@ -12,16 +10,16 @@
   padding: 0;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 920px) {
 
   .newsCardList__cards-grid {
     column-gap: 8px;
     row-gap: 8px;
-    width: 100%;
+    max-width: 100%;
   }
 }
 
-@media screen and (max-width: 1320px) {
+@media screen and (max-width: 750px) {
 
   .newsCardList__cards-grid {
     grid-template-columns: 1fr 1fr;
@@ -32,7 +30,7 @@
 
 }
 
-@media screen and (max-width: 915px) {
+@media screen and (max-width:559px) {
 
   .newsCardList__cards-grid {
     grid-template-columns: 1fr;

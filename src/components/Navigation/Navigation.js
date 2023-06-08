@@ -8,7 +8,7 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <div className='navigation'>
+    <nav className='navigation'>
       {isMobileNav ?
         <div className='mobile-nav_visible'>
           <div className={"mobile__link-container"}>
@@ -97,7 +97,7 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
             </button>
         }
       </div>
-    </div>
+    </nav>
   );
 }
 export default Navigation;

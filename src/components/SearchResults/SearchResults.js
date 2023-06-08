@@ -3,13 +3,13 @@ import NewsCard from "../NewsCard/NewsCard";
 function SearchResults() {
   return (
     <section className="searchResults">
-      <div className="searchResults____container">
+      <div className="searchResults___container">
         <h2 className="searchResults__title">Search results</h2>
-        <div className="newsCardList__cards-grid">
+        <ul className="searchResults__cards-grid">
         <NewsCard/>
         <NewsCard/>
         <NewsCard/>
-        </div>
+        </ul>
         <button className="searchResults__showMore">Show more</button>
       </div>
     </section>

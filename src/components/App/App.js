@@ -1,6 +1,6 @@
 import './App.css';
 import '../../index.css';
-import { Routes, Route, Navigate} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { CurrentLocationContext } from '../../contexts/CurrentLocationContext';
@@ -21,25 +21,25 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
-  const [isMobileNav , setIsMobileNavOpen] = useState(false);
+  const [isMobileNav, setIsMobileNavOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isRegSuccessPopupOpen, setRegSuccessPopupOpen] = useState(false);
   const [isInHomepage, setInHomepage] = useState(true);
   console.log(isInHomepage);
 
-  function handleSignup ({email, password, name}) {
+  function handleSignup({ email, password, name }) {
     auth.register(email, password, name)
-    .then ((res) => {
-      console.log('res', res);
-      closeAllPopups(true);
-      setRegSuccessPopupOpen(true);
-      setIsSignupPopupOpen(false);
+      .then((res) => {
+        console.log('res', res);
+        closeAllPopups(true);
+        setRegSuccessPopupOpen(true);
+        setIsSignupPopupOpen(false);
 
-    })
-    .catch((err) => {
-      console.log(`Something went wrong: ${err}`);
+      })
+      .catch((err) => {
+        console.log(`Something went wrong: ${err}`);
 
-    });
+      });
   }
 
   function handleLogin(email, password) {
@@ -60,7 +60,7 @@ function App() {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
   }
-  
+
   useEffect(() => {
     if (window.location.pathname === '/') {
       setInHomepage(true)
@@ -88,8 +88,6 @@ function App() {
     setIsMobileNavOpen(true);
   }
 
-  
-
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
@@ -102,21 +100,21 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    if(jwt) {
+    if (jwt) {
       auth.getContent(jwt)
-      .then((data) => {
-          if(data) {
-              setLoggedIn(true);
-              setCurrentUser({ 
-                _id: data._id, 
-                name: data.username, 
-                email: data.email 
-              });
+        .then((data) => {
+          if (data) {
+            setLoggedIn(true);
+            setCurrentUser({
+              _id: data._id,
+              name: data.username,
+              email: data.email
+            });
           }
-      }, )
-      .catch((err) => {
+        },)
+        .catch((err) => {
           console.log(`Something went wrong in getContent function: ${err}`);
-      })
+        })
     }
   }, [isLoggedIn]);
 
@@ -140,7 +138,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   isInHomepage={isInHomepage}
                 />
-                
+
               </>
               }
             />
@@ -155,24 +153,24 @@ function App() {
           </Routes>
           <Footer />
           <Login
-                  isOpen={isLoginPopupOpen}
-                  onClose={closeAllPopups}
-                  onSignin={handleLogin}
-                  handleDifferentPopup={openPopupSignup}
-                />
-                <Signup 
-                isOpen={isSignupPopupOpen}
-                onClose={closeAllPopups}
-                onSignup={handleSignup}
-                handleDifferentPopup={openPopuplogin}
-                />
-                <RegSuccessPopup
-                name="RegSuccess"
-                isOpen={isRegSuccessPopupOpen}
-                onClose={closeAllPopups}
-                handleDifferentPopup={openPopuplogin}
-                isLoggedIn={isLoggedIn}
-                />
+            isOpen={isLoginPopupOpen}
+            onClose={closeAllPopups}
+            onSignin={handleLogin}
+            handleDifferentPopup={openPopupSignup}
+          />
+          <Signup
+            isOpen={isSignupPopupOpen}
+            onClose={closeAllPopups}
+            onSignup={handleSignup}
+            handleDifferentPopup={openPopuplogin}
+          />
+          <RegSuccessPopup
+            name="RegSuccess"
+            isOpen={isRegSuccessPopupOpen}
+            onClose={closeAllPopups}
+            handleDifferentPopup={openPopuplogin}
+            isLoggedIn={isLoggedIn}
+          />
         </div>
       </CurrentLocationContext.Provider>
     </CurrentUserContext.Provider >

@@ -1,9 +1,10 @@
 /* responsible for the navigation menu */
 .navigation {
-  margin: 0;
   display: flex;
   height: 100%;
   flex-direction: row;
+  margin: 0px auto 0px;
+  max-width: 1440px;
 }
 
 .navigation__container {
@@ -139,7 +140,7 @@
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 520px) {
   .navigation__burger-white {
     display: block;
     background-image: url(../../images/menuWHITE.svg);

@@ -1,8 +1,7 @@
 /* the news card component */
 .newsCard {
   height: 576px;
-  width: 400px;
-  min-width: 288px;
+  width: 100%;
   border-radius: 10px;
   background-color: #ffffff;
   color: #1A1B22;
@@ -109,7 +108,7 @@
   width: calc(100% - 24*2);
   height: 304px;
   background-color: #ffffff;
-  margin: 17px 24px 24px 24px;
+  margin: 20px 24px 24px 24px;
 }
 
 .NewsCard__text-date {
@@ -128,6 +127,7 @@
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
+  height: 60px;
   color: #1A1B22;
   margin: 0px;
 }
@@ -138,8 +138,10 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
+  height: 110px;
   color: #1A1B22;
   margin: 0px;
+  overflow:hidden;
 }
 
 .NewsCard__text-source {
@@ -154,10 +156,11 @@
   margin: 0px;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1278px) {
   .newsCard {
-    height: 420px;
-    width: 224px;
+    height: 100%;
+    width: 100%;
+    /* max-width: 224px; */
   }
 
   .NewsCard__img {
@@ -185,10 +188,14 @@
   .NewsCard__text-title {
     font-size: 22px;
     line-height: 24px;
+    height: 72px;
+  }
+  .NewsCard__text-text {
+    height: 88px;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 560px) {
   .newsCard {
     height: 440px;
     width: 288px;
@@ -207,5 +214,10 @@
   .NewsCard__text-container {
     height: 244px;
   }
+
+  .NewsCard__text-title {
+    height: 48px;
+  }
+
 
 }

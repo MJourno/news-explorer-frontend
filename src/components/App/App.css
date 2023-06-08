@@ -1,5 +1,6 @@
 /* the root component of the application, created by CRA */
 .App {
+  padding: 0px;
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;

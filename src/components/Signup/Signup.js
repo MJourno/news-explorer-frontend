@@ -31,7 +31,7 @@ function Signup(props) {
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       />
-      <span className="popup__input_type_error"></span>
+      {/* <span className="popup__input_type_error"></span> */}
       <h5 className="popup__subtitle">Password</h5>
       <input
       className="popup__input"
@@ -41,7 +41,7 @@ function Signup(props) {
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       />
-      <span className="popup__input_type_error"></span>
+      {/* <span className="popup__input_type_error"></span> */}
       <h5 className="popup__subtitle">Username</h5>
       <input
       className="popup__input"
@@ -51,7 +51,7 @@ function Signup(props) {
       value={name}
       onChange={(e) => setName(e.target.value)}
       />
-      <span className="popup__input_type_error"></span>
+      {/* <span className="popup__input_type_error"></span> */}
     </PopupWithForm>
   )
 }

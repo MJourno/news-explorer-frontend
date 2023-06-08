@@ -1,6 +1,6 @@
 function SearchForm() {
   return (
-    <div className="searchForm">
+    <section className="searchForm">
       <div className="searchForm__container">
         <h1 className="searchForm__title">
           What's going on in
@@ -14,7 +14,7 @@ function SearchForm() {
           <button type="submit" className="search-bar__button">Search</button>
         </form >
       </div>
-    </div>
+    </section>
   );
 }
 export default SearchForm;

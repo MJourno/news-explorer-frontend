@@ -7,8 +7,9 @@
 }
 
 .about__container {
-  width: 100%;
-  margin: 0;
+  padding: 0px;
+  max-width: 1232px;
+  margin: 0px auto 0px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -23,6 +24,7 @@
 }
 
 .about__text-container {
+  padding: 0px;
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -38,6 +40,13 @@
   color: #1A1B22;
   text-align: left;
   margin: 51px 0 24px 0;
+}
+
+.about__paragraphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
 }
 
 .about__text {
@@ -65,6 +74,7 @@
   }
 
   .about__text-container {
+    padding: 0px;
     width: 424px;
     margin-left: 32px;
   }
@@ -74,6 +84,10 @@
     line-height: 40px;
     margin: 0px;
     margin-bottom: 16px;
+  }
+
+  .about__paragraphs {
+    height: 168px;
   }
 
 }
@@ -86,6 +100,7 @@
   }
 
   .about__container {
+    padding: 0px;
     flex-direction: column;
     align-items: center;
   }
@@ -97,9 +112,14 @@
   }
 
   .about__text-container {
+    padding: 0px;
     width: 288px;
     margin: 24px 16px 128px 16px;
   }
+  .about__paragraphs {
+    height: 240px;
+  }
+  
 
   .about__title {
     margin: 0px;

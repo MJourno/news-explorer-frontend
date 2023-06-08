@@ -1,11 +1,11 @@
 function Preloader() {
   return (
-    <div className="preloader">
+    <section className="preloader">
       <i className="preloader__spin"></i>
       <p className="preloader__text">
       Searching for news...
       </p>
-    </div>
+    </section>
   )
 }
 export default Preloader;
