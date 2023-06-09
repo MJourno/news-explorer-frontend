@@ -14,7 +14,7 @@ function Main({ isLoggedIn, isInHomepage}) {
       {/* <Preloader />
       <NotFound /> */}
       {
-        isLoggedIn ?
+        !isLoggedIn ?
           <>
             <SavedNewsHeader />
             <SavedNews

@@ -1,10 +1,10 @@
 .newsCardList__cards-grid {
-  margin: 0px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 16px;
   row-gap: 16px;
-  width: 100%;
+  max-width: 1232px;
   list-style: none;
   justify-items: center;
   padding: 0;
@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
 
   .newsCardList__cards-grid {
     grid-template-columns: 1fr 1fr;
