@@ -6,6 +6,8 @@ import normalBookMark from '../../images/bookmark_normal.svg';
 // import markedBookMark from '../../images/bookmark_marked.png';
 
 function NewsCard({ isInHomepage }) {
+  console.log(window.location.pathname)
+
   const [isShown, setIsShown] = useState(false);
 
   function enterMoouse() {

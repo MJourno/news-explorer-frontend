@@ -1,6 +1,7 @@
 import NewsCard from '../NewsCard/NewsCard';
 
 function NewsCardList({isInHomepage, setTooltipOpen}) {
+  
   return (
     // <section className='newsCardList'>
     //   <div className='newsCardList__container'>

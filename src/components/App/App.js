@@ -5,19 +5,16 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { CurrentLocationContext } from '../../contexts/CurrentLocationContext';
 import Header from '../Header/Header';
-// import savedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-// import { allCards } from '../data/data';
 import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
 import RegSuccessPopup from '../RegSuccessPopup/RegSuccessPopup';
 import * as auth from '../../utils/auth';
-// import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SavedNewsPage from '../SavedNewsPage/SavedNewsPage';
 
 function App() {
-  // const [cards, setCards] = useState(allCards);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
@@ -25,8 +22,7 @@ function App() {
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isRegSuccessPopupOpen, setRegSuccessPopupOpen] = useState(false);
   const [isInHomepage, setInHomepage] = useState(true);
-  console.log(isInHomepage);
-
+  
   function handleSignup({ email, password, name }) {
     auth.register(email, password, name)
       .then((res) => {
@@ -65,9 +61,9 @@ function App() {
     if (window.location.pathname === '/') {
       setInHomepage(true)
     } else {
-      setInHomepage(false)
-    }
-  }, [window.location.pathname])
+        setInHomepage(false)
+      }
+  }, [])
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
@@ -122,12 +118,14 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentLocationContext.Provider value={isInHomepage}>
         <div className="App">
+
           <Routes>
             <Route path='/'
               element={<>
                 <Header
                   openPopuplogin={openPopuplogin}
                   openPopupSignup={openPopupSignup}
+                  openMobileNav={openMobileNav}
                   isSavedNews={true}
                   isLoggedIn={isLoggedIn}
                   isMobileNav={isMobileNav}
@@ -144,11 +142,24 @@ function App() {
             />
             <Route path='/saved-news'
               element={<>
+              <Header
+                  openPopuplogin={openPopuplogin}
+                  openPopupSignup={openPopupSignup}
+                  openMobileNav={openMobileNav}
+                  isSavedNews={true}
+                  isLoggedIn={isLoggedIn}
+                  isMobileNav={isMobileNav}
+                  setIsLoginPopupOpen={setIsLoginPopupOpen}
+                  setIsMobileNavOpen={setIsMobileNavOpen}
+                />
                 <ProtectedRoute
                   currentUser={currentUser}
                   isLoggedIn={isLoggedIn}
                   handleSignOut={handleSignOut}
-                /></>} />
+                  component={SavedNewsPage}
+                  isInHomepage={isInHomepage}
+                />
+              </>} />
             <Route path='*' element={<Navigate to='/' />} />
           </Routes>
           <Footer />

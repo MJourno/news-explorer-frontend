@@ -3,7 +3,7 @@
   width: 100%;
   position: absolute;
   z-index: 2;
-  overflow: visible;
+  /* overflow: visible; */
   border-bottom: 1px solid #c4c4c4;
 }
 

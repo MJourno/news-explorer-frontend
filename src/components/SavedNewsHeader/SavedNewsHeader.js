@@ -1,4 +1,4 @@
-function savedNewsHeader() {
+function SavedNewsHeader() {
   return (
     <section className="savedNewsHeader">
       <div className="savedNewsHeader__container">
@@ -11,4 +11,4 @@ function savedNewsHeader() {
     </section>
   )
 }
-export default savedNewsHeader;
+export default SavedNewsHeader;
