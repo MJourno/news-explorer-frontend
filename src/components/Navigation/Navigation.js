@@ -4,8 +4,10 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from 'react-router-dom';
 
 function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMobileNav }) {
+  
   const isInHomepage = useContext(CurrentLocationContext);
   const currentUser = useContext(CurrentUserContext);
+  console.log(isInHomepage)
 
   return (
     <nav className='navigation'>
@@ -50,21 +52,21 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
 
       <div className='navigation__container'>
         <p
-          className={`navigation__logo ${!isInHomepage && 'navigation__logo_dark'}`}
+          className={`navigation__logo ${!isInHomepage && 'navigation__link_dark'}`}
         >
           NewsExplorer
         </p>
         <div className={"navigation__link-container"}>
           <Link
-            className={`navigation__link ${isInHomepage && 'navigation__link_active : navigation__link_dark'}`}
+            className={`navigation__link navigation__link_active ${!isInHomepage && 'navigation__link_dark'}`}
             to='/'
           >
             Home
           </Link>
           {
-            isLoggedIn ?
+            !isLoggedIn ?
               <Link
-                className={`navigation__link ${!isInHomepage && 'navigation__link_active : navigation__link_dark'}`}
+                className={`navigation__link ${!isInHomepage && 'navigation__link_active_dark : navigation__link_dark'}`}
                 to='/saved-news'
               >
                 Saved articles
@@ -72,11 +74,11 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
               :
               ''
           }
-          <button onClick={() => setIsLoginPopupOpen(true)} className="navigation__signin">
+          <button onClick={() => setIsLoginPopupOpen(true)} className={`navigation__signin ${!isInHomepage && 'navigation__signin_black'}`}>
             {
               isLoggedIn ?
                 <>
-                  <span>{currentUser.name}
+                  <span>Elise
                     <i className={`navigation__logout-symbol ${!isInHomepage && 'navigation__logout-symbol_dark'}`}
                     />
                   </span>

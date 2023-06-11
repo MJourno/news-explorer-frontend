@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 712px) {
 
   .newsCardList__cards-grid {
     grid-template-columns: 1fr 1fr;
@@ -30,7 +30,7 @@
 
 }
 
-@media screen and (max-width:559px) {
+@media screen and (max-width:530px) {
 
   .newsCardList__cards-grid {
     grid-template-columns: 1fr;

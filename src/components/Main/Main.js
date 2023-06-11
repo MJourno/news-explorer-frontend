@@ -7,14 +7,14 @@ import SearchForm from '../SearchForm/SearchForm'
 // import SavedNews from '../SavedNews/SavedNews';
 import SearchResults from '../SearchResults/SearchResults';
 
-function Main({ /*isLoggedIn,*/ isInHomepage}) {
+function Main() {
   return (
     <main className="main">
       <SearchForm />
       {/* <Preloader />
       <NotFound /> */}
       <SearchResults 
-      isInHomepage={isInHomepage}
+     
       />
       <About />
     </main>

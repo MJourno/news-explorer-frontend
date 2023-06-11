@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { useContext } from "react";
 import normalTrash from '../../images/trash._normal.svg';
 // import hoverTrash from '../../images/trash_hover.svg';
 import normalBookMark from '../../images/bookmark_normal.svg';
 // import hoverBookMark from '../../images/bookmark_hover.svg';
 // import markedBookMark from '../../images/bookmark_marked.png';
-
-function NewsCard({ isInHomepage }) {
-  console.log(window.location.pathname)
+import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
+function NewsCard() {
 
   const [isShown, setIsShown] = useState(false);
+  const isInHomepage = useContext(CurrentLocationContext);
 
   function enterMoouse() {
     setIsShown(true);
@@ -24,10 +25,10 @@ function NewsCard({ isInHomepage }) {
           <button className='newsCard__keyword-button'>Nature</button>
           <div className="NewsCard__button-container">
             {
-              isShown && (<span className="newsCard__tooltip">{isInHomepage ? 'Remove from saved' : 'Sign in to save articles'}</span>)
+              isShown && (<span className="newsCard__tooltip">{!isInHomepage ? 'Remove from saved' : 'Sign in to save articles'}</span>)
             }
             {
-              isInHomepage ?
+              !isInHomepage ?
                 <button
                   className='newsCard__img-icon newsCard__img-delete'
                   onMouseEnter={enterMoouse}

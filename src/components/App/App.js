@@ -2,6 +2,7 @@ import './App.css';
 import '../../index.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { CurrentLocationContext } from '../../contexts/CurrentLocationContext';
 import Header from '../Header/Header';
@@ -22,7 +23,8 @@ function App() {
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isRegSuccessPopupOpen, setRegSuccessPopupOpen] = useState(false);
   const [isInHomepage, setInHomepage] = useState(true);
-  
+  const location = useLocation();
+
   function handleSignup({ email, password, name }) {
     auth.register(email, password, name)
       .then((res) => {
@@ -58,12 +60,8 @@ function App() {
   }
 
   useEffect(() => {
-    if (window.location.pathname === '/') {
-      setInHomepage(true)
-    } else {
-        setInHomepage(false)
-      }
-  }, [])
+    location.pathname !== '/' ? setInHomepage(false) : setInHomepage(true);
+  }, [location, isInHomepage])
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
@@ -119,6 +117,7 @@ function App() {
       <CurrentLocationContext.Provider value={isInHomepage}>
         <div className="App">
 
+
           <Routes>
             <Route path='/'
               element={<>
@@ -134,7 +133,7 @@ function App() {
                 />
                 <Main
                   isLoggedIn={isLoggedIn}
-                  isInHomepage={isInHomepage}
+                // isInHomepage={isInHomepage}
                 />
 
               </>
@@ -142,7 +141,7 @@ function App() {
             />
             <Route path='/saved-news'
               element={<>
-              <Header
+                <Header
                   openPopuplogin={openPopuplogin}
                   openPopupSignup={openPopupSignup}
                   openMobileNav={openMobileNav}
@@ -157,7 +156,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleSignOut={handleSignOut}
                   component={SavedNewsPage}
-                  isInHomepage={isInHomepage}
+                // isInHomepage={isInHomepage}
                 />
               </>} />
             <Route path='*' element={<Navigate to='/' />} />

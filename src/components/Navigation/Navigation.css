@@ -50,9 +50,6 @@
   padding: 0px 10px 23px 10px;
 }
 
-.navigation__link_dark {
-  color: #1A1B22;
-}
 
 .navigation__link_active_dark {
   border-bottom: #1A1B22 3px solid;
@@ -63,7 +60,7 @@
   color: #FFFFFF;
 }
 
-.navigation__logo_dark {
+.navigation__link_dark {
   color: #1A1B22;
 }
 
@@ -86,8 +83,14 @@
   z-index: 1;
 }
 
-.navigation__signin-black {
+.navigation__signin_black {
   color: #1A1B22;
+  border: 1px solid #D1D2D6;
+}
+
+.navigation__signin_black:hover {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
 }
 
 
@@ -131,12 +134,18 @@
 
   .navigation__link {
     font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
   }
 
   .navigation__signin {
     font-size: 16px;
+    line-height: 24px;
     margin-left: 16px;
+    width: 100px;
+    height: 40px;
   }
+  
 
 }
 

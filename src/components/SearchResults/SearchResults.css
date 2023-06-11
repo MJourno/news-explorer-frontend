@@ -84,10 +84,8 @@
     max-width: 100%;
   }
 }
-@media screen and (max-width: 700px) {
-  
-}
-@media screen and (max-width: 700px) {
+
+@media screen and (max-width: 712px) {
 
   .searchResults {
     padding: 32px 16px;
@@ -112,7 +110,7 @@
   }
 }
 
-@media screen and (max-width:559px) {
+@media screen and (max-width:530px) {
 
   .searchResults__cards-grid {
     grid-template-columns: 1fr;
