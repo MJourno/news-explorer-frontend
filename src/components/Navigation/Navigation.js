@@ -64,7 +64,7 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
             Home
           </Link>
           {
-            !isLoggedIn ?
+            isLoggedIn ?
               <Link
                 className={`navigation__link ${!isInHomepage && 'navigation__link_active_dark : navigation__link_dark'}`}
                 to='/saved-news'
