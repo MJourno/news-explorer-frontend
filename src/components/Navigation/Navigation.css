@@ -1,0 +1,265 @@
+/* responsible for the navigation menu */
+.navigation {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  margin: 0px auto 0px;
+  max-width: 1440px;
+}
+
+.navigation__container {
+  width: calc(100% - 104px * 2);
+  height: 80px;
+  display: flex;
+  position: relative;
+  margin: 0 auto 0 auto;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.navigation__logo {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin: 0;
+  align-self: center;
+}
+
+
+.navigation__link-container {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+}
+
+.navigation__link {
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #B6BCBF;
+  cursor: pointer;
+  margin-left: 76px;
+  padding: 0px 10px 23px 10px;
+}
+
+
+.navigation__link_active_dark {
+  border-bottom: #1A1B22 3px solid;
+}
+
+.navigation__link_active {
+  border-bottom: #FFFFFF 3px solid;
+  color: #FFFFFF;
+}
+
+.navigation__link_dark {
+  color: #1A1B22;
+}
+
+.navigation__signin {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 100px;
+  cursor: pointer;
+  width: 176px;
+  height: 48px;
+  background-color: transparent;
+  margin: auto 0;
+  margin-left: 42px;
+  z-index: 1;
+}
+
+.navigation__signin_black {
+  color: #1A1B22;
+  border: 1px solid #D1D2D6;
+}
+
+.navigation__signin_black:hover {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
+}
+
+
+.navigation__logout-symbol {
+  background-image: url(../../images/logout-white.svg);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+  margin-left: 19px;
+}
+
+.navigation__logout-symbol_dark {
+  background-image: url(../../images/logout.svg);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+  margin-left: 19px;
+}
+
+.navigation__burger-white {
+  display: none;
+}
+
+.navigation__burger-black {
+  display: none;
+}
+
+@media screen and (max-width: 1439px) {
+  .navigation__container {
+    width: calc(100% - 40px * 2);
+    height: 66px;
+  }
+
+  .navigation__link {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
+  }
+
+  .navigation__signin {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
+    width: 100px;
+    height: 40px;
+  }
+  
+
+}
+
+@media screen and (max-width: 520px) {
+  .navigation__burger-white {
+    display: block;
+    background-image: url(../../images/menuWHITE.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .navigation__burger-black {
+    display: block;
+    background-image: url(../../images/menuBLACK.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .navigation__burger-close {
+    display: block;
+    background-image: url(../../images/close.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .navigation__link-container {
+    display: none;
+  }
+
+  .navigation__container {
+    width: calc(100% - 16px * 2);
+    height: 56px;
+  }
+
+  .navigation__logo {
+    font-size: 16px;
+  }
+
+  /*mobile navigation menu*/
+  .mobile__link-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 56px);
+    margin-top: 56px;
+    align-items: flex-start;
+    padding: 16px 16px 24px;
+    justify-content: space-between;
+  }
+
+  .navigation__link {
+    font-size: 18px;
+    line-height: 56px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .navigation__signin {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0px;
+    width: 100%;
+    height: 56px;
+  }
+
+  .mobile-nav_visible {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 1);
+    width: 100%;
+    height: 35%;
+    z-index: -1;
+  }
+
+  .mobile-nav_visible::after {
+    content: '';
+    position: fixed;
+    display: block;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    z-index: -2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+}

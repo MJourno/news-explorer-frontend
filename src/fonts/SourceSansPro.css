@@ -1,0 +1,23 @@
+@font-face {
+  font-display: auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/SourceSansPro-Black.ttf) format('trueType');
+}
+
+@font-face {
+  font-display: auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: bold;
+  font-weight: 700;
+  src: url(../fonts/SourceSansPro-Bold.ttf) format('trueType');
+}
+
+@font-face {
+  font-display: auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  src: url(../fonts/SourceSansPro-Regular.ttf) format('trueType');
+}

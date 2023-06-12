@@ -1,0 +1,122 @@
+.searchResults {
+  background-color: #F5F6F7;
+  padding: 80px 104px;
+  width: calc(100% - 104px * 2);
+}
+
+.searchResults___container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  max-width: 1232px;
+  margin: 0 auto;
+}
+
+.searchResults__title {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  margin: 0;
+  margin-bottom: 64px;
+}
+
+.searchResults__cards-grid {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+  max-width: 1232px;
+  list-style: none;
+  justify-items: center;
+  padding: 0;
+}
+
+.searchResults__showMore {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  width: 288px;
+  height: 64px;
+  background-color: #E8E8E8;
+  margin: auto;
+  margin-top: 64px;
+}
+
+.searchResults__showMore:hover {
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 1440px) {
+  .searchResults {
+    padding: 40px 40px;
+    width: calc(100% - 40px * 2);
+  }
+
+  .searchResults__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 32px;
+  }
+
+  .searchResults__showMore {
+    width: 240px;
+    height: 56px;
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+
+  .searchResults__cards-grid {
+    column-gap: 8px;
+    row-gap: 8px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 712px) {
+
+  .searchResults {
+    padding: 32px 16px;
+    padding-bottom: 24px;
+    width: calc(100% - 16px * 2);
+  }
+
+  .searchResults__title {
+    margin-bottom: 58px;
+  }
+
+  .searchResults__cards-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+  .searchResults__showMore {
+    width: 288px;
+    margin-top: 21px;
+  }
+}
+
+@media screen and (max-width:530px) {
+
+  .searchResults__cards-grid {
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+}

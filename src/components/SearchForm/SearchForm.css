@@ -1,0 +1,167 @@
+/* the search form for the user to enter their search request */
+.searchForm {
+  background-image: url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  background-size: cover;
+  margin: 0;
+  padding: 80px 0;
+}
+
+.searchForm__container {
+  margin: 0 auto;
+  max-width: 608px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.searchForm__title {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  color: #FFFFFF;
+  margin: 80px 0 32px;
+  max-width: 608px;
+}
+
+.searchForm__subtitle {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-bottom: 88px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #D1D2D6;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar__input {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1A1B22;
+  width: 376px;
+  border: 0;
+  padding-left: 24px;
+  border-radius: 100px;
+}
+
+.search-bar__input:focus {
+  outline: 0;
+}
+
+.search-bar__button {
+  background-color: #2F71E5;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+  width: 168px;
+  height: 64px;
+  border: none;
+}
+
+.search-bar__button:hover {
+  background-color: #347EFF;
+}
+
+.search-bar__button:active {
+  background-color: #2A65CC;
+}
+
+@media screen and (max-width: 1439px) {
+
+  .searchForm {
+    padding: 66px 0 48px;
+  }
+
+  .searchForm__container {
+    width: calc(100% - 160px * 2);
+    max-width: 452px;
+  }
+
+  .searchForm__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin: 38px 0 16px;
+    max-width: 385px;
+  }
+
+  .searchForm__subtitle {
+    margin-bottom: 48px;
+  }
+
+  .search-bar {
+    height: 56px;
+  }
+
+  .search-bar__input {
+    width: 228px;
+    border-radius: 100px;
+  }
+
+  .search-bar__button {
+    width: 160px;
+    height: 56px;
+  }
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+  .searchForm {
+    padding: 86px 0 32px;
+  }
+
+  .searchForm__container {
+    width: calc(100% - 16px * 2);
+  }
+
+  .searchForm__title {
+    max-width: 285px;
+  }
+
+  .searchForm__subtitle {
+    margin-bottom: 122px;
+  }
+
+  .search-bar {
+    height: 128px;
+    backdrop-filter: blur(0px);
+    flex-direction: column;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+  }
+
+  .search-bar__input {
+    width: calc(100% - 16px * 2);
+    height: 56px;
+    margin: 0 0 16px;
+  }
+
+  .search-bar__button {
+    width: 100%;
+    height: 56px;
+  }
+}

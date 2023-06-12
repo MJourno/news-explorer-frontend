@@ -1,0 +1,21 @@
+@font-face {
+  font-display: auto;
+  font-family: 'Roboto', sans-serif, 'Roboto Slab';
+  font-style:normal;
+  font-weight: 900;
+  src: url(../fonts/roboto-900.woff) format('WOFF');
+}
+@font-face {
+  font-display: auto;
+  font-family: 'Roboto', sans-serif, 'Roboto Slab';
+  font-style:normal;
+  font-weight:500;
+  src: url(../fonts/roboto-500.woff) format('WOFF');
+}
+@font-face {
+  font-display: auto;
+  font-family: 'Roboto', sans-serif, 'Roboto Slab';
+  font-style: normal;
+  font-weight: normal;
+  src: url(../fonts/roboto-400-regular.woff) format('WOFF');
+}

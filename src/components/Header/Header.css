@@ -1,0 +1,23 @@
+/* the component that renders the site header on the page */
+.header {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  /* overflow: visible; */
+  border-bottom: 1px solid #c4c4c4;
+}
+
+@media screen and (max-width: 400px) {
+  .header_nav-active {
+    position: fixed;
+  }
+
+  .header_nav-active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #c4c4c4;
+  }
+
+}

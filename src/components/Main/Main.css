@@ -1,0 +1,7 @@
+/* the components of the main page and the page with saved cards */
+.main {
+  max-width: 100%;
+  margin: 0px auto 0px;
+  position: static
+}
+

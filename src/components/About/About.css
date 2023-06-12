@@ -1,0 +1,129 @@
+/* a presentational component that displays information about the author */
+.about {
+  background-color: #ffffff;
+  padding: 80px 104px;
+  width: calc(100% - 104px * 2);
+  position: static;
+}
+
+.about__container {
+  padding: 0px;
+  max-width: 1232px;
+  margin: 0px auto 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.about__image {
+  border-radius: 50%;
+  width: 464px;
+  height: 464px;
+  margin: 0;
+  padding: 0;
+}
+
+.about__text-container {
+  padding: 0px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 56px;
+}
+
+.about__title {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  text-align: left;
+  margin: 51px 0 24px 0;
+}
+
+.about__paragraphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+}
+
+.about__text {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  text-align: left;
+  margin: 0;
+}
+
+@media screen and (max-width: 1439px) {
+
+  .about {
+    padding: 40px 40px;
+    width: calc(100% - 40px * 2);
+  }
+
+  .about__image {
+    width: 232px;
+    height: 232px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+  }
+
+  .about__text-container {
+    padding: 0px;
+    width: 424px;
+    margin-left: 32px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0px;
+    margin-bottom: 16px;
+  }
+
+  .about__paragraphs {
+    height: 168px;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  .about {
+    padding: 32px 16px;
+    width: calc(100% - 16px * 2);
+  }
+
+  .about__container {
+    padding: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about__image {
+    width: 272px;
+    height: 272px;
+    margin: 0px;
+  }
+
+  .about__text-container {
+    padding: 0px;
+    width: 288px;
+    margin: 24px 16px 128px 16px;
+  }
+  .about__paragraphs {
+    height: 240px;
+  }
+  
+
+  .about__title {
+    margin: 0px;
+    margin-bottom: 16px;
+  }
+
+}
