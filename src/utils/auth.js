@@ -1,16 +1,20 @@
-export const BASE_URL = 'http://localhost:3000';
+import { BASE_URL } from "./constants";
 
-function getResponseData(response, errorText) {
+function getResponseData(response) {
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error(errorText);
+    return Promise.reject(`Error in response from the server: ${response.status}`)
   }
 }
-export const register = (email, password, name) => {
+//signup
+export function register(email, password, name) {
+  console.log('auth-Reg');
+
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
+      'Accept': "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name }),
@@ -21,38 +25,42 @@ export const register = (email, password, name) => {
       console.log(err);
     })
 };
-
-export const authorize = (email, password) => {
+//signin
+export function authorize({email , password}) {
+  console.log('auth-Login');
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ password: password, email: email }),
+    body: JSON.stringify({ 'email': email, password }),
   })
-    .then((response) =>
-      getResponseData(response, 'Unsuccessful log in')
+    .then((res) =>
+      getResponseData(res, 'Unsuccessful log in')
     )
     .then((data) => {
-      if (data) {
-        console.log(data, "data");
-        // localStorage.setItem('token', data.token);
+      console.log(data);
+      if(data.token) {
+        localStorage.setItem("jwt", data.token);
         return data;
+      } else {
+        return;
       }
     })
 };
+//corrent user
+export function getContent(jwt) {
+  console.log('auth-checktoken');
 
-export const getContent = (token) => {
-  console.log("tokenMe",token);
-  return fetch(`${BASE_URL}/users/me`,
-    {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "authorization": `Bearer ${token}`
-      }
-    })
-    .then((response) =>
-      getResponseData(response, 'The provided token is invalid')
-    )
-};
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  }).then((response) => {
+    getResponseData(response, 'Unsuccessful')
+  });
+}
