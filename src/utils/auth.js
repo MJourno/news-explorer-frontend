@@ -1,10 +1,10 @@
 import { BASE_URL } from "./constants";
 
-function getResponseData(response) {
-  if (response.ok) {
-    return response.json();
+function getResponseData(res) {
+  if (res.ok) {
+    return res.json();
   } else {
-    return Promise.reject(`Error in response from the server: ${response.status}`)
+    return Promise.reject(`Error in response from the server: ${res.status}`)
   }
 }
 //signup
@@ -14,13 +14,14 @@ export function register(email, password, name) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
-      'Accept': "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name }),
   })
-    .then((response) =>
-      getResponseData(response, 'Unsuccessful register')
+    .then((res) => {
+      console.log(res, 'resSignup');
+      return res.json()}
     ).catch((err) => {
       console.log(err);
     })
@@ -60,7 +61,7 @@ export function getContent(jwt) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
     },
-  }).then((response) => {
-    getResponseData(response, 'Unsuccessful')
+  }).then((res) => {
+    getResponseData(res, 'Unsuccessful')
   });
 }

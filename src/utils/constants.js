@@ -2,7 +2,8 @@ const API_KEY = "b2a672d2f775405cae86634ea8df9024";
 const PROXY_URL = "https://nomoreparties.co/news/v2/everything";
 const CARD_AMOUNT = 3;
 const ARTICLE_AMOUNT = 100;
-const BASE_URL = "https://api.articlear.crabdance.com";
+const BASE_URL = "https://api.news4u.strangled.net";
+// const BASE_URL = "http://localhost:3001";
 
 module.exports = {
   API_KEY,

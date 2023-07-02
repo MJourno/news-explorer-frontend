@@ -7,9 +7,17 @@ class MainApi {
     this._headers = headers;
   }
 
+  getResponseData(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Error in response from the server: ${res.status}`)
+    }
+  }
+
   customFetch(url, headers) {
     return fetch(url, headers)
-      .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+      .then(this.getResponseData);
   }
 
   getSavedArticles(jwt) {

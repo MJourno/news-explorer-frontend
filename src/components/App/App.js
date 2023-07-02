@@ -15,7 +15,7 @@ import * as auth from '../../utils/auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SavedNewsPage from '../SavedNewsPage/SavedNewsPage';
 // import newsApi from '../../utils/NewsApi';
-// import mainApi from '../../utils/MainApi';
+import mainApi from '../../utils/MainApi';
 
 function App() {
   const navigate  = useNavigate();
@@ -34,7 +34,7 @@ function App() {
   const [isInHomepage, setInHomepage] = useState(true);
   const location = useLocation();
 
-  // const [savedArticles, setSavedArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   function handleSignup({ email, password, name }) {
     console.log('app-handleRegisterSubmit');
@@ -118,46 +118,46 @@ function App() {
   }, []);
 
   // Automatic login for user saved in local storage.
-  // useEffect(() => {
-  //   console.log('appCheckToken');
+  useEffect(() => {
+    console.log('appCheckToken');
 
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     auth.getContent(jwt)
-  //       .then((data) => {
-  //         if (data) {
-  //           setLoggedIn(true);
-  //           setCurrentUser({
-  //             _id: data._id,
-  //             name: data.name,
-  //             email: data.email
-  //           });
-  //         }
-  //       },)
-  //       .catch((err) => {
-  //         console.log(`Something went wrong in getContent function: ${err}`);
-  //       })
-  //   }
-  // }, [isLoggedIn]);
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.getContent(jwt)
+        .then((data) => {
+          if (data) {
+            setLoggedIn(true);
+            setCurrentUser({
+              _id: data._id,
+              name: data.name,
+              email: data.email
+            });
+          }
+        },)
+        .catch((err) => {
+          console.log(`Something went wrong in getContent function: ${err}`);
+        })
+    }
+  }, [isLoggedIn]);
 
-  // // GET articles if user logged in
-  // useEffect(() => {
-  //   if (jwt) {
-  //     mainApi.getSavedArticles(jwt)
-  //       .then(res => {
-  //         setSavedArticles(res);
-  //       })
-  //       .catch(err => {
-  //         console.log(`Error in getSavedArticles: ${err}`);
-  //       })
-  //   }
-  // }, [jwt]);
+  // GET articles if user logged in
+  useEffect(() => {
+    if (jwt) {
+      mainApi.getSavedArticles(jwt)
+        .then(res => {
+          setSavedArticles(res);
+        })
+        .catch(err => {
+          console.log(`Error in getSavedArticles: ${err}`);
+        })
+    }
+  }, [jwt]);
 
-  // useEffect(() => {
-  //   if (jwt) {
-  //     setLoggedIn(true);
-  //   }
-  // }, [jwt]);
+  useEffect(() => {
+    if (jwt) {
+      setLoggedIn(true);
+    }
+  }, [jwt]);
 
 
   return (
