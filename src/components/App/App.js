@@ -18,7 +18,7 @@ import SavedNewsPage from '../SavedNewsPage/SavedNewsPage';
 import mainApi from '../../utils/MainApi';
 
 function App() {
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState({});
   const [jwt, setToken] = useState(localStorage.getItem("jwt"));
@@ -38,7 +38,6 @@ function App() {
 
   function handleSignup({ email, password, name }) {
     console.log('app-handleRegisterSubmit');
-
     auth
       .register(email, password, name)
       .then((res) => {
@@ -67,7 +66,6 @@ function App() {
           console.log(res.token, 'app-login-res.token');
           localStorage.setItem("jwt", res.token);
           setToken(res.token);
-          setCurrentUser(currentUser);
           setLoggedIn(true);
           closeAllPopups();
         }
@@ -117,16 +115,31 @@ function App() {
     return () => document.removeEventListener('keydown', closeByEscape);
   }, []);
 
-  // Automatic login for user saved in local storage.
+  // User token check
+  // useEffect(() => {
+  //   console.log('app.CheckToken');
+  //   if (jwt) {
+  //     auth
+  //       .getContent(jwt)
+  //       .then((res) => {
+  //         console.log('res', jwt);
+  //         setLoggedIn(true);
+  //       })
+  //       .catch((err) => {
+  //         console.log(`Something went wrong in getContent function: ${err}`);
+  //       })
+  //   }
+  // }, [jwt]);
   useEffect(() => {
-    console.log('appCheckToken');
-
-    const jwt = localStorage.getItem('jwt');
     if (jwt) {
+      console.log("im logged in")
       auth.getContent(jwt)
         .then((data) => {
+          console.log(data, "app.data")
+
           if (data) {
-            setLoggedIn(true);
+            console.log(data, "app.in.data")
+            // setLoggedIn(true);
             setCurrentUser({
               _id: data._id,
               name: data.name,
@@ -140,18 +153,20 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  // GET articles if user logged in
-  useEffect(() => {
-    if (jwt) {
-      mainApi.getSavedArticles(jwt)
-        .then(res => {
-          setSavedArticles(res);
-        })
-        .catch(err => {
-          console.log(`Error in getSavedArticles: ${err}`);
-        })
-    }
-  }, [jwt]);
+  // GETting current user and articles if the user logged in
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     console.log('app.getData');
+  //     Promise.all([mainApi.getCurrentUser(jwt), mainApi.getSavedArticles(jwt)])
+  //       .then(([user, articles]) => {
+  //         setCurrentUser(user.data);
+  //         setSavedArticles(articles.data);
+  //       })
+  //       .catch(err => {
+  //         console.log(`Error in getSavedArticles and getCurrentUser: ${err}`);
+  //       })
+  //   }
+  // }, [jwt, isLoggedIn]);
 
   useEffect(() => {
     if (jwt) {
@@ -159,6 +174,7 @@ function App() {
     }
   }, [jwt]);
 
+  console.log(currentUser, "check current user.app");
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -202,7 +218,6 @@ function App() {
 
                 />
                 <ProtectedRoute
-                  currentUser={currentUser}
                   isLoggedIn={isLoggedIn}
                   onLogOut={handleSignOut}
                   component={SavedNewsPage}

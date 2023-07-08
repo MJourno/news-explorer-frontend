@@ -20,6 +20,16 @@ class MainApi {
       .then(this.getResponseData);
   }
 
+  getCurrentUser(jwt) {
+    return this.customFetch(`${this._baseUrl}/user/me`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    })
+  }
+
   getSavedArticles(jwt) {
     return this.customFetch(`${this._baseUrl}/articles`, {
       method: "GET",

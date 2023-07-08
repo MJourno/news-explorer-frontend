@@ -3,17 +3,24 @@ import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from 'react-router-dom';
 
-function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMobileNav, onLogOut }) {
-  
+function Navigation({
+  isLoggedIn,
+  setIsLoginPopupOpen,
+  setIsMobileNavOpen,
+  isMobileNav,
+  onLogOut,
+}) {
+
   const isInHomepage = useContext(CurrentLocationContext);
   const currentUser = useContext(CurrentUserContext);
   console.log(isInHomepage);
-  
+  console.log(currentUser, "check current user");
+
   function logOut() {
     console.log('logout');
     onLogOut();
   }
-  
+
 
   return (
     <nav className='navigation'>
@@ -37,7 +44,7 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
                 :
                 ''
             }
-            <button onClick={ !isLoggedIn ? () => setIsLoginPopupOpen(true) : logOut} className="navigation__signin">
+            <button onClick={!isLoggedIn ? () => setIsLoginPopupOpen(true) : logOut} className="navigation__signin">
               {
                 isLoggedIn ?
                   <>

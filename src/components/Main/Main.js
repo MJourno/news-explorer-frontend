@@ -13,9 +13,9 @@ function Main() {
       <SearchForm />
       {/* <Preloader />
       <NotFound /> */}
-      <SearchResults 
+      {/* <SearchResults 
      
-      />
+      /> */}
       <About />
     </main>
   );
