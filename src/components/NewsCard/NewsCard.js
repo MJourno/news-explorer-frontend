@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
-import normalTrash from '../../images/trash._normal.svg';
-// import hoverTrash from '../../images/trash_hover.svg';
-import normalBookMark from '../../images/bookmark_normal.svg';
-// import hoverBookMark from '../../images/bookmark_hover.svg';
-// import markedBookMark from '../../images/bookmark_marked.png';
 import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
-function NewsCard() {
 
+function NewsCard({
+  data,
+  index,
+  isLoggedIn,
+  handleDifferentPopup,
+  savedArticles,
+  onSaveArticleClick,
+  onDeleteArticleClick,
+}) {
+  console.log(data, 'cards.data');
+  console.log(index, 'cards.index');
+
+  const [isSaved, setIsSaved] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const isInHomepage = useContext(CurrentLocationContext);
 
@@ -17,48 +24,116 @@ function NewsCard() {
   function leaveMoouse() {
     setIsShown(false);
   }
+ 
+  useEffect(() => {
+    if (savedArticles) {
+      setIsSaved(savedArticles.find((article) => article.title === data.title));
+      console.log(savedArticles,"save.newscard");
 
-  return (
-    <li className='newsCard'>
-      <div className='NewsCard__img'>
-        <div className='NewsCard__img-container'>
-          <button className='newsCard__keyword-button'>Nature</button>
-          <div className="NewsCard__button-container">
-            {
-              isShown && (<span className="newsCard__tooltip">{!isInHomepage ? 'Remove from saved' : 'Sign in to save articles'}</span>)
-            }
-            {
-              !isInHomepage ?
-                <button
-                  className='newsCard__img-icon newsCard__img-delete'
-                  onMouseEnter={enterMoouse}
-                  onMouseLeave={leaveMoouse}
-                >
-                  <img src={normalTrash} alt="Remove from saved" />
-                </button>
-                :
-                <button
-                  className='newsCard__img-icon newsCard__img-delete'
-                  onMouseEnter={enterMoouse}
-                  onMouseLeave={leaveMoouse}
-                >
-                  <img src={normalBookMark} alt="Sign in to save articles" />
-                </button>
-            }
-          </div>
-          {/* <button className="newsCard__img-icon newsCard__img-save"> */}
-          {/* <img src={normalBookMark} alt="Sign in to save articles"/> */}
-          {/* </button> */}
-          {/* <span className="newsCard__tooltip">Sign in to save articles</span> */}
+    }
+  }, [data.title, savedArticles]);
+
+  function changeSaveStatus(data) {
+    if (isSaved) {
+      onDeleteArticleClick(data);
+    } else {
+      onSaveArticleClick(data);
+      console.log(data,'onSaveArticleClick');
+    }
+    setIsSaved(!isSaved);
+  }
+  
+
+  function changeDateFormat() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    let articleDate = !isInHomepage ? data.date : data.publishedAt;
+    let newDate = new Date(articleDate?.slice(0, 10));
+    let changeDateFormat = `${months[newDate.getMonth()]} ${newDate.getDate()}, ${newDate.getFullYear()}`;
+
+    return changeDateFormat;
+  }
+
+  return !isInHomepage ? (
+   <>
+      <button
+        className="newsCard__img-icon newsCard__img-delete"
+        onMouseEnter={enterMoouse}
+        onMouseLeave={leaveMoouse}
+        onClick={() => onDeleteArticleClick(data)}
+      ></button>
+      {isShown && (<span className="newsCard__tag newsCard__tag_type_tooltip">
+        Remove from saved
+      </span>)}
+      <div className="newsCard__tag newsCard__tag_type_keyword">
+        {data.keyword}
+      </div>
+      <a
+        className="newsCard__link"
+        href={data.link}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img className="newsCard__image" src={data.image} alt={data.title} />
+        <div className="newsCard__text-container">
+          <p className="newsCard__text-date">{changeDateFormat()}</p>
+          <h3 className="newsCard__text-title">{data.title}</h3>
+          <p className="newsCard__text-text">{data.description}</p>
+          <cite className="newsCard__text-source">{data.source}</cite>
         </div>
+      </a>
+    </>
+  ) : (
+    <>
+      <button
+        onMouseEnter={enterMoouse}
+        onMouseLeave={leaveMoouse}
+        className={`newsCard__img-icon newsCard__img-save ${isLoggedIn && isSaved ? "newsCard__img-save_active" : ""
+          }`}
+        onClick={() => {
+          if (isLoggedIn) {
+            changeSaveStatus(data);
+          } else {
+            handleDifferentPopup();
+          }
+        }}
+      ></button>
+      {!isLoggedIn && isShown && (
+        <span className="newsCard__tag newsCard__tag_type_tooltip">
+          Sign in to save articles
+        </span>
+      )}
+      <a
+        className="newsCard__link"
+        href={data.url}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          className="newsCard__image"
+          src={data.urlToImage}
+          alt={data.title}
+        />
+      </a>
+      <div className="newsCard__text-container">
+        <p className="newsCard__text-date">{changeDateFormat()}</p>
+        <h2 className="newsCard__text-title">{data.title}</h2>
+        <p className="newsCard__text-text">{data.description}</p>
+        <p className="newsCard__text-source">{data.source?.name}</p>
       </div>
-      <div className="NewsCard__text-container">
-        <p className="NewsCard__text-date">November 4, 2020</p>
-        <h3 className="NewsCard__text-title">Everyone Needs a Special 'Sit Spot' in Nature</h3>
-        <p className="NewsCard__text-text">Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find...</p>
-        <cite className="NewsCard__text-source">treehugger</cite>
-      </div>
-    </li>
+    </>
   )
 }
 export default NewsCard;

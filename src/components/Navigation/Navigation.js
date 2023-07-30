@@ -13,11 +13,8 @@ function Navigation({
 
   const isInHomepage = useContext(CurrentLocationContext);
   const currentUser = useContext(CurrentUserContext);
-  console.log(isInHomepage);
-  console.log(currentUser, "check current user");
 
   function logOut() {
-    console.log('logout');
     onLogOut();
   }
 

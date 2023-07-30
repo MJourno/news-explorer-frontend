@@ -4,7 +4,6 @@ function RegSuccessPopup(props) {
   const info = 'Registration successfully completed!';
 
   function openDifferentPopup() {
-    console.log('openDifferentPopup2');
     props.onClose();
     props.handleDifferentPopup();
   }

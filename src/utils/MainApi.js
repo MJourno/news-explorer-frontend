@@ -51,18 +51,43 @@ class MainApi {
     });
 
   }
-  saveArticle(articleId, jwt) {
-    return this.customFetch(`${this._baseUrl}/articles/${articleId}`, {
-      method: "PUT",
+  saveArticle(data, searchKeyword, jwt) {
+    console.log(data,'api');
+    //get information from data
+    const {
+      title,
+      description: text,
+      publishedAt: date,
+      url: link,
+      urlToImage: image,
+    } = data;
+    //get source from data
+    const source = data.source.name;
+    //get keyword from first capitalized letter
+    const keyword = searchKeyword.charAt(0).toUpperCase() + searchKeyword.slice(1);
+
+    return this.customFetch(`${this._baseUrl}/articles`, {
+      method: "POST",
       headers: {
         authorization: `Bearer ${jwt}`,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image,
+      })
     });
   }
 
-  unsaveArticle(articleId, jwt) {
-    return this.customFetch(`${this._baseUrl}/articles/${articleId}`, {
+
+  unsaveArticle(id, jwt) {
+    console.log('why?');
+    return this.customFetch(`${this._baseUrl}/articles/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${jwt}`,

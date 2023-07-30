@@ -16,10 +16,7 @@ class NewsApi {
   }
 
   getArticles(keyword) {
-    return this.customFetch(`${this._baseUrl}?q=${keyword}&from=${weekAgo.toISOString()}&to=${now.toISOString()}&pageSize=${ARTICLE_AMOUNT}&apiKey=${API_KEY}`, {
-      headers: this._headers,
-        method: 'GET'
-    }
+    return this.customFetch(`${this._baseUrl}?q=${keyword}&from=${weekAgo.toISOString()}&to=${now.toISOString()}&language=en&sortBy=relevancy&pageSize=${ARTICLE_AMOUNT}&apiKey=${API_KEY}`
   )
   .then((res) => res.articles);
   }

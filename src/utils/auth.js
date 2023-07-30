@@ -9,7 +9,6 @@ function getResponseData(res) {
 }
 //signup
 export function register(email, password, name) {
-  console.log('auth-Reg');
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
@@ -19,7 +18,6 @@ export function register(email, password, name) {
     body: JSON.stringify({ email, password, name }),
   })
     .then((res) => {
-      console.log(res, 'resSignup');
       return getResponseData(res)}
     ).catch((err) => {
       console.log(err);
@@ -27,7 +25,6 @@ export function register(email, password, name) {
 };
 //signin
 export function authorize({email , password}) {
-  console.log('auth-Login');
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
@@ -40,7 +37,6 @@ export function authorize({email , password}) {
       getResponseData(res, 'Unsuccessful log in')
     )
     .then((data) => {
-      console.log(data, "auth.data");
       if(data.token) {
         localStorage.setItem("jwt", data.token);
         return data;
@@ -51,7 +47,6 @@ export function authorize({email , password}) {
 };
 //check user-token
 export function getContent(jwt) {
-  console.log('auth.checktoken',jwt);
 
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",

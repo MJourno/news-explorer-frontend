@@ -14,7 +14,7 @@ import RegSuccessPopup from '../RegSuccessPopup/RegSuccessPopup';
 import * as auth from '../../utils/auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SavedNewsPage from '../SavedNewsPage/SavedNewsPage';
-// import newsApi from '../../utils/NewsApi';
+import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
 
 function App() {
@@ -30,18 +30,98 @@ function App() {
   const [isMobileNav, setIsMobileNavOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isRegSuccessPopupOpen, setRegSuccessPopupOpen] = useState(false);
+  const [isNewsCardListOpen, setIsNewsCardListOpen] = useState(false);
 
   const [isInHomepage, setInHomepage] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
   const location = useLocation();
 
+  const [searchKeyword, setSearchKeyword] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [hasResults, setHasResults] = useState(false);
+
+  const [showCards, setShowCards] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [savedCardsArray, setSavedCardsArray] = useState([]);
+
+  // Search articles from api by keyword
+  function handleSearchSubmit(keyword) {
+    setIsNewsCardListOpen(false);
+    setIsLoading(true);
+    newsApi
+      .getArticles(keyword)
+      .then((res) => {
+        setIsNewsCardListOpen(true);
+        console.log(res, "results.res");
+        setCards(res);
+        if (res.length === 0) {
+          setHasResults(false);
+        } else {
+          setHasResults(true);
+        }
+      })
+      .catch((err) => {
+        console.log(`Something went wrong: ${err}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  }
+
+  //Save articles and adds it to an array of articles
+  function handleArticleSaving(data) {
+    console.log(data.title,'title');
+    if (!savedArticles
+      .find((obj) => obj.title === data.title)) {
+      mainApi
+        .saveArticle(data, searchKeyword, jwt)
+        .then((res) => {
+          console.log(res, 'save.res');
+          if (res) {
+            setSavedArticles((savedArticles) => [...savedArticles, res.data]);
+            console.log('****article saved****');
+          }
+        })
+        .catch((err) => {
+          console.log(`Something went wrong: ${err}`);
+        })
+    } else {
+      console.log('you have allready saved this article');
+    }
+  }
+
+  // DELETE-ing article and removes it from the array
+  function handleRemoveArticle(data) {
+    let articleId;
+
+    if (isInHomepage) {
+      if (savedArticles.find((obj) => obj.link === data.url)) {
+        const article = savedArticles.find((obj) => {
+          return obj.link === data.url;
+        });
+        articleId = article._id;
+      } else {
+        console.log("this card does not exist");
+      }
+    } else {
+      articleId = data._id;
+    }
+    mainApi
+      .unsaveArticle(articleId, jwt)
+      .then((data) => {
+        console.log(data,'delete?');
+        setSavedArticles(savedArticles.filter((obj) => obj._id !== data._id));
+      })
+      .catch((err) => {
+        console.log(`Something went wrong: ${err}`);
+      });
+  }
 
   function handleSignup({ email, password, name }) {
-    console.log('app-handleRegisterSubmit');
     auth
       .register(email, password, name)
       .then((res) => {
-        console.log('handleSignup', res);
         if (res) {
           setIsRegistered(true);
           setRegSuccessPopupOpen(true);
@@ -56,14 +136,10 @@ function App() {
   }
 
   function handleLogin(email, password) {
-    console.log('app-handleLoginSubmit');
-
     auth
       .authorize(email, password)
       .then((res) => {
-        console.log(res, 'app-login-res');
         if (res.token) {
-          console.log(res.token, 'app-login-res.token');
           localStorage.setItem("jwt", res.token);
           setToken(res.token);
           setLoggedIn(true);
@@ -76,7 +152,6 @@ function App() {
   }
 
   function handleSignOut() {
-    console.log('handleSignOut');
     localStorage.removeItem("jwt");
     setLoggedIn(false);
     navigate("/");
@@ -115,66 +190,27 @@ function App() {
     return () => document.removeEventListener('keydown', closeByEscape);
   }, []);
 
-  // User token check
-  // useEffect(() => {
-  //   console.log('app.CheckToken');
-  //   if (jwt) {
-  //     auth
-  //       .getContent(jwt)
-  //       .then((res) => {
-  //         console.log('res', jwt);
-  //         setLoggedIn(true);
-  //       })
-  //       .catch((err) => {
-  //         console.log(`Something went wrong in getContent function: ${err}`);
-  //       })
-  //   }
-  // }, [jwt]);
   useEffect(() => {
-    if (jwt) {
-      console.log("im logged in")
-      auth.getContent(jwt)
-        .then((data) => {
-          console.log(data, "app.data")
+    if (isLoggedIn) {
+      Promise.all([auth.getContent(jwt), mainApi.getSavedArticles(jwt)])
+        .then(([user, articles]) => {
+          console.log(user, "user.data")
+          console.log(articles, "articles.data")
+          setCurrentUser(user);
+          setSavedArticles(articles);
 
-          if (data) {
-            console.log(data, "app.in.data")
-            // setLoggedIn(true);
-            setCurrentUser({
-              _id: data._id,
-              name: data.name,
-              email: data.email
-            });
-          }
         },)
         .catch((err) => {
           console.log(`Something went wrong in getContent function: ${err}`);
         })
     }
-  }, [isLoggedIn]);
-
-  // GETting current user and articles if the user logged in
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     console.log('app.getData');
-  //     Promise.all([mainApi.getCurrentUser(jwt), mainApi.getSavedArticles(jwt)])
-  //       .then(([user, articles]) => {
-  //         setCurrentUser(user.data);
-  //         setSavedArticles(articles.data);
-  //       })
-  //       .catch(err => {
-  //         console.log(`Error in getSavedArticles and getCurrentUser: ${err}`);
-  //       })
-  //   }
-  // }, [jwt, isLoggedIn]);
+  }, [jwt, isLoggedIn]);
 
   useEffect(() => {
     if (jwt) {
       setLoggedIn(true);
     }
   }, [jwt]);
-
-  console.log(currentUser, "check current user.app");
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -197,8 +233,27 @@ function App() {
                 />
                 <Main
                   isLoggedIn={isLoggedIn}
-                // isInHomepage={isInHomepage}
+                  isNewsCardListOpen={isNewsCardListOpen}
+                  isLoading={isLoading}
+                  // isInHomepage={isInHomepage}
+                  //on searchForm
+                  onSearch={handleSearchSubmit}
+                  searchKeyword={searchKeyword}
+                  setSearchKeyword={setSearchKeyword}
+                  setIsNewsCardListOpen={setIsNewsCardListOpen}
+                  //on searchResults
+                  onSaveArticleClick={handleArticleSaving}
+                  setShowCards={setShowCards}
+                  showCards={showCards}
+                  hasResults={hasResults}
+                  cards={cards}
+                  //on card
+                  handleDifferentPopup={openPopuplogin}
+                  savedArticles={savedArticles}
+                  onDeleteArticleClick={handleRemoveArticle}
+
                 />
+
 
               </>
               }
@@ -221,6 +276,10 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   onLogOut={handleSignOut}
                   component={SavedNewsPage}
+                  setShowCards={setShowCards}
+                  savedCardsArray={savedCardsArray}
+                  setSavedCardsArray={setSavedCardsArray}
+                  savedArticles={savedArticles}
                 // isInHomepage={isInHomepage}
                 />
               </>} />
