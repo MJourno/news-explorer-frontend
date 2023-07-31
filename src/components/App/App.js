@@ -96,7 +96,7 @@ function App() {
     let articleId;
 
     if (isInHomepage) {
-      if (savedArticles.find((obj) => obj.link === data.url)) {
+      if (savedArticles.find((obj) => obj.link === data?.url)) {
         const article = savedArticles.find((obj) => {
           return obj.link === data.url;
         });
