@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useContext } from "react";
-import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
+// import { useContext } from "react";
+// import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
 import NewsCard from '../NewsCard/NewsCard';
 
 function NewsCardList({
@@ -13,14 +13,15 @@ function NewsCardList({
   onDeleteArticleClick,
 }) {
 
-  const isInHomepage = useContext(CurrentLocationContext);
+  // const isInHomepage = useContext(CurrentLocationContext);
 
   
   useEffect(() => {
-    if (!isInHomepage) {
+    
       setSavedCardsArray(savedArticles);
-    }
-  }, [isInHomepage, savedArticles, setSavedCardsArray]);
+    
+  }, [ savedArticles, setSavedCardsArray]);
+  
   return (
     <ul className='newsCardList__cards-grid'>
        {savedCardsArray?.map((newscard) => (

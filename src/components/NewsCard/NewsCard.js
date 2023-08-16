@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useContext } from "react";
 import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
 function NewsCard({
@@ -9,7 +9,7 @@ function NewsCard({
   onDeleteArticleClick
 }) {
 
-  const [Saved, setSaved] = useState(false);
+  // const [Saved, setSaved] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const isInHomepage = useContext(CurrentLocationContext);
 
@@ -21,19 +21,20 @@ function NewsCard({
     setIsShown(false);
   }
  
-const isSaved = useMemo(() => {
-  console.log(data,"data1");
-   savedArticles.find((article) => article?.title === data?.title)},[savedArticles, data]);
-  
+// const isSaved = useMemo(() => {
+//   console.log(data,"data1");
+//    savedArticles.find((article) => article?.title === data?.title)},[savedArticles, data]);
+const isSaved = savedArticles.some((article) => article.title === data.title);
+
 function saveArticle(data) {
  
-  setSaved(!isSaved);
+  // setSaved(!isSaved);
   onSaveArticleClick(data);
 }
 
 function deleteArticle(data) {
   onDeleteArticleClick(data)
-  setSaved(!isSaved);
+  // setSaved(!isSaved);
 }
 
   function changeDateFormat() {
@@ -57,6 +58,9 @@ function deleteArticle(data) {
 
     return changeDateFormat;
   }
+  const saveButtonClassName = isSaved
+  ? 'newsCard__img-icon newsCard__img-save_active'
+  : 'newsCard__img-icon newsCard__img-save';
 
   return !isInHomepage ? (
    <>
@@ -83,7 +87,7 @@ function deleteArticle(data) {
           <p className="newsCard__text-date">{changeDateFormat()}</p>
           <h3 className="newsCard__text-title">{data.title}</h3>
           <p className="newsCard__text-text">{data.description}</p>
-          <cite className="newsCard__text-source">{data.source}</cite>
+          <cite className="newsCard__text-source">{data.source?.name}</cite>
         </div>
       </a>
     </>
@@ -93,8 +97,8 @@ function deleteArticle(data) {
         onMouseEnter={enterMoouse}
         onMouseLeave={leaveMoouse}
         
-        onClick={() => saveArticle(data) }
-        className= {`${Saved ? 'newsCard__img-icon newsCard__img-save_active' : 'newsCard__img-icon newsCard__img-save'}`}
+        onClick={() => (isSaved ? deleteArticle(data) : saveArticle(data))}
+      className={saveButtonClassName}
       ></button>
       {!isLoggedIn && isShown && (
         <span className="newsCard__tag newsCard__tag_type_tooltip">

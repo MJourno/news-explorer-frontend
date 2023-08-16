@@ -75,11 +75,17 @@ console.log(data,"app data check");
       .find((obj) => obj.title === data.title)) {
       mainApi
         .saveArticle(data, searchKeyword, jwt)
-        .then((res) => {
-          if (res) {
-            setSavedArticles((savedArticles) => [...savedArticles, res.data]);
-          }
+        .then(() => {
+          mainApi.getSavedArticles(jwt)
+          .then((updatedArticles) => {
+            setSavedArticles(updatedArticles)
+          })
         })
+        // .then((res) => {
+        //   if (res) {
+        //     setSavedArticles((prevSavedArticles) => [...prevSavedArticles, res.data]);
+        //   }
+        // })
         .catch((err) => {
           console.log(`Something went wrong: ${err}`);
         })
@@ -106,8 +112,11 @@ console.log(data,"app data check");
     }
     mainApi
       .unsaveArticle(articleId, jwt)
-      .then((data) => {
-        setSavedArticles(savedArticles.filter((obj) => obj._id !== data._id));
+      .then(() => {
+        mainApi.getSavedArticles(jwt)
+        .then((updatedArticles) => {
+          setSavedArticles(updatedArticles)
+        })
       })
       .catch((err) => {
         console.log(`Something went wrong: ${err}`);
