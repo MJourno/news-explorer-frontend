@@ -21,7 +21,6 @@ function NewsCardList({
       setSavedCardsArray(savedArticles);
     }
   }, [isInHomepage, savedArticles, setSavedCardsArray]);
-
   return (
     <ul className='newsCardList__cards-grid'>
        {savedCardsArray?.map((newscard) => (

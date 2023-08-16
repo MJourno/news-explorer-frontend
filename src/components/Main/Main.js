@@ -12,14 +12,14 @@ function Main({
   setSearchKeyword,
   onSearch,
   onSaveArticleClick,
-  onDeleteArticleClick,
+  // onDeleteArticleClick,
   savedArticles,
   savedCardsArray,
   setShowCards,
   showCards,
   cards,
   isLoggedIn,
-  handleDifferentPopup,
+  // handleDifferentPopup,
   isLoading
 }) {
   return (
@@ -38,8 +38,8 @@ function Main({
           showCards={showCards}
           cards={cards}
           isLoggedIn={isLoggedIn}
-          handleDifferentPopup={handleDifferentPopup}
-          onDeleteArticleClick={onDeleteArticleClick}
+          // handleDifferentPopup={handleDifferentPopup}
+          // onDeleteArticleClick={onDeleteArticleClick}
         />
       )}
       {isLoading && <Preloader />}

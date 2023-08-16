@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 function PopupWithForm(props) {
 
   function openDifferentPopup() {
-    console.log('openDifferentPopup1');
     props.onClose();
     props.handleDifferentPopup();
 

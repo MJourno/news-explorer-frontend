@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useContext } from "react";
 import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
-
 function NewsCard({
   data,
-  index,
   isLoggedIn,
-  handleDifferentPopup,
   savedArticles,
   onSaveArticleClick,
-  onDeleteArticleClick,
+  onDeleteArticleClick
 }) {
-  console.log(data, 'cards.data');
-  console.log(index, 'cards.index');
 
-  const [isSaved, setIsSaved] = useState(false);
+  const [Saved, setSaved] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const isInHomepage = useContext(CurrentLocationContext);
+
 
   function enterMoouse() {
     setIsShown(true);
@@ -25,24 +21,20 @@ function NewsCard({
     setIsShown(false);
   }
  
-  useEffect(() => {
-    if (savedArticles) {
-      setIsSaved(savedArticles.find((article) => article.title === data.title));
-      console.log(savedArticles,"save.newscard");
-
-    }
-  }, [data.title, savedArticles]);
-
-  function changeSaveStatus(data) {
-    if (isSaved) {
-      onDeleteArticleClick(data);
-    } else {
-      onSaveArticleClick(data);
-      console.log(data,'onSaveArticleClick');
-    }
-    setIsSaved(!isSaved);
-  }
+const isSaved = useMemo(() => {
+  console.log(data,"data1");
+   savedArticles.find((article) => article?.title === data?.title)},[savedArticles, data]);
   
+function saveArticle(data) {
+ 
+  setSaved(!isSaved);
+  onSaveArticleClick(data);
+}
+
+function deleteArticle(data) {
+  onDeleteArticleClick(data)
+  setSaved(!isSaved);
+}
 
   function changeDateFormat() {
     const months = [
@@ -72,7 +64,7 @@ function NewsCard({
         className="newsCard__img-icon newsCard__img-delete"
         onMouseEnter={enterMoouse}
         onMouseLeave={leaveMoouse}
-        onClick={() => onDeleteArticleClick(data)}
+        onClick={() => deleteArticle(data)}
       ></button>
       {isShown && (<span className="newsCard__tag newsCard__tag_type_tooltip">
         Remove from saved
@@ -100,15 +92,9 @@ function NewsCard({
       <button
         onMouseEnter={enterMoouse}
         onMouseLeave={leaveMoouse}
-        className={`newsCard__img-icon newsCard__img-save ${isLoggedIn && isSaved ? "newsCard__img-save_active" : ""
-          }`}
-        onClick={() => {
-          if (isLoggedIn) {
-            changeSaveStatus(data);
-          } else {
-            handleDifferentPopup();
-          }
-        }}
+        
+        onClick={() => saveArticle(data) }
+        className= {`${Saved ? 'newsCard__img-icon newsCard__img-save_active' : 'newsCard__img-icon newsCard__img-save'}`}
       ></button>
       {!isLoggedIn && isShown && (
         <span className="newsCard__tag newsCard__tag_type_tooltip">

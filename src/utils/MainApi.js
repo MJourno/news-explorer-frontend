@@ -52,7 +52,6 @@ class MainApi {
 
   }
   saveArticle(data, searchKeyword, jwt) {
-    console.log(data,'api');
     //get information from data
     const {
       title,
@@ -61,6 +60,7 @@ class MainApi {
       url: link,
       urlToImage: image,
     } = data;
+    console.log(data,"api check");
     //get source from data
     const source = data.source.name;
     //get keyword from first capitalized letter
@@ -84,9 +84,7 @@ class MainApi {
     });
   }
 
-
   unsaveArticle(id, jwt) {
-    console.log('why?');
     return this.customFetch(`${this._baseUrl}/articles/${id}`, {
       method: "DELETE",
       headers: {

@@ -53,7 +53,6 @@ function App() {
       .getArticles(keyword)
       .then((res) => {
         setIsNewsCardListOpen(true);
-        console.log(res, "results.res");
         setCards(res);
         if (res.length === 0) {
           setHasResults(false);
@@ -71,16 +70,14 @@ function App() {
 
   //Save articles and adds it to an array of articles
   function handleArticleSaving(data) {
-    console.log(data.title,'title');
+console.log(data,"app data check");
     if (!savedArticles
       .find((obj) => obj.title === data.title)) {
       mainApi
         .saveArticle(data, searchKeyword, jwt)
         .then((res) => {
-          console.log(res, 'save.res');
           if (res) {
             setSavedArticles((savedArticles) => [...savedArticles, res.data]);
-            console.log('****article saved****');
           }
         })
         .catch((err) => {
@@ -96,7 +93,7 @@ function App() {
     let articleId;
 
     if (isInHomepage) {
-      if (savedArticles.find((obj) => obj.link === data?.url)) {
+      if (savedArticles.find((obj) => obj.link === data.url)) {
         const article = savedArticles.find((obj) => {
           return obj.link === data.url;
         });
@@ -110,12 +107,12 @@ function App() {
     mainApi
       .unsaveArticle(articleId, jwt)
       .then((data) => {
-        console.log(data,'delete?');
         setSavedArticles(savedArticles.filter((obj) => obj._id !== data._id));
       })
       .catch((err) => {
         console.log(`Something went wrong: ${err}`);
       });
+      
   }
 
   function handleSignup({ email, password, name }) {
@@ -194,8 +191,6 @@ function App() {
     if (isLoggedIn) {
       Promise.all([auth.getContent(jwt), mainApi.getSavedArticles(jwt)])
         .then(([user, articles]) => {
-          console.log(user, "user.data")
-          console.log(articles, "articles.data")
           setCurrentUser(user);
           setSavedArticles(articles);
 
@@ -280,6 +275,7 @@ function App() {
                   savedCardsArray={savedCardsArray}
                   setSavedCardsArray={setSavedCardsArray}
                   savedArticles={savedArticles}
+                  onDeleteArticleClick={handleRemoveArticle}
                 // isInHomepage={isInHomepage}
                 />
               </>} />

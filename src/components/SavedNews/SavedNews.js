@@ -8,9 +8,9 @@ function SavedNews({
   showCards,
   setShowCards,
   isLoggedIn,
-  handleDifferentPopup,
-  onSaveArticleClick,
-  onDeleteArticleClick,
+  // handleDifferentPopup,
+  // onSaveArticleClick,
+  onDeleteArticleClick
 }) {
 
   return (
@@ -23,8 +23,8 @@ function SavedNews({
         showCards={showCards}
         setShowCards={setShowCards}
         isLoggedIn={isLoggedIn}
-        handleDifferentPopup={handleDifferentPopup}
-        onSaveArticleClick={onSaveArticleClick}
+        // handleDifferentPopup={handleDifferentPopup}
+        // onSaveArticleClick={onSaveArticleClick}
         onDeleteArticleClick={onDeleteArticleClick}
       />
     </section>

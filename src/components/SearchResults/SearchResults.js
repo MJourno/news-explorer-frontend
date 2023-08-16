@@ -10,9 +10,9 @@ function SearchResults({
   showCards,
   setShowCards,
   isLoggedIn,
-  handleDifferentPopup,
-  onSaveArticleClick,
-  onDeleteArticleClick
+  // handleDifferentPopup,
+  onSaveArticleClick
+  // onDeleteArticleClick
 }) {
 
   const isInHomepage = useContext(CurrentLocationContext);
@@ -47,10 +47,10 @@ function SearchResults({
               data={newscard}
               index={index}
               isLoggedIn={isLoggedIn}
-              handleDifferentPopup={handleDifferentPopup}
+              // handleDifferentPopup={handleDifferentPopup}
               savedArticles={savedArticles}
               onSaveArticleClick={onSaveArticleClick}
-              onDeleteArticleClick={onDeleteArticleClick}
+              // onDeleteArticleClick={onDeleteArticleClick}
             /></li>
           ))}
 

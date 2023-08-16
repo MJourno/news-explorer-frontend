@@ -4,7 +4,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 
 function SavedNewsHeader({ savedArticles }) {
-  console.log(savedArticles,'savedarticles');
 
   const currentUser = useContext(CurrentUserContext);
   const [keywordArray, setKeywordArray] = useState([]);
