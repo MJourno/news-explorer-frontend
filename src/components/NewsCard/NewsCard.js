@@ -6,6 +6,7 @@ function NewsCard({
   isLoggedIn,
   savedArticles,
   onSaveArticleClick,
+  handleDifferentPopup,
   onDeleteArticleClick
 }) {
 
@@ -27,14 +28,22 @@ function NewsCard({
 const isSaved = savedArticles.some((article) => article.title === data.title);
 
 function saveArticle(data) {
- 
-  // setSaved(!isSaved);
+ if (isLoggedIn) {
   onSaveArticleClick(data);
+
+ }else {
+  setIsShown(true);
+  handleDifferentPopup();
+}
 }
 
 function deleteArticle(data) {
-  onDeleteArticleClick(data)
-  // setSaved(!isSaved);
+  if (isLoggedIn) {
+    onDeleteArticleClick(data)
+  } else {
+    setIsShown(true);
+    handleDifferentPopup();
+  }
 }
 
   function changeDateFormat() {

@@ -10,7 +10,7 @@ function SearchResults({
   showCards,
   setShowCards,
   isLoggedIn,
-  // handleDifferentPopup,
+  handleDifferentPopup,
   onSaveArticleClick
   // onDeleteArticleClick
 }) {
@@ -47,7 +47,7 @@ function SearchResults({
               data={newscard}
               index={index}
               isLoggedIn={isLoggedIn}
-              // handleDifferentPopup={handleDifferentPopup}
+              handleDifferentPopup={handleDifferentPopup}
               savedArticles={savedArticles}
               onSaveArticleClick={onSaveArticleClick}
               // onDeleteArticleClick={onDeleteArticleClick}

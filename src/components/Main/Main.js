@@ -19,7 +19,7 @@ function Main({
   showCards,
   cards,
   isLoggedIn,
-  // handleDifferentPopup,
+  handleDifferentPopup,
   isLoading
 }) {
   return (
@@ -38,7 +38,7 @@ function Main({
           showCards={showCards}
           cards={cards}
           isLoggedIn={isLoggedIn}
-          // handleDifferentPopup={handleDifferentPopup}
+          handleDifferentPopup={handleDifferentPopup}
           // onDeleteArticleClick={onDeleteArticleClick}
         />
       )}
