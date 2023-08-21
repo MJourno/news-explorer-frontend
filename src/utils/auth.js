@@ -19,9 +19,10 @@ export function register(email, password, name) {
   })
     .then((res) => {
       return getResponseData(res)}
-    ).catch((err) => {
-      console.log(err);
-    })
+    )
+    // .catch((err) => {
+    //   console.log(err);
+    // })
 };
 //signin
 export function authorize({email , password}) {
