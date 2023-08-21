@@ -31,7 +31,9 @@ function SearchForm({
         <p className="searchForm__subtitle">
           Find the latest news on any topic and save them in your personal account.
         </p>
-        <form className="search-bar">
+        <form className="search-bar"
+        onSubmit={handleSubmit}
+        >
           <input
             placeholder={placeholder}
             value={formInputValue}
@@ -40,7 +42,6 @@ function SearchForm({
             className="search-bar__input"
           />
           <button
-            onClick={handleSubmit}
             type="submit" className="search-bar__button">Search</button>
         </form >
       </div>

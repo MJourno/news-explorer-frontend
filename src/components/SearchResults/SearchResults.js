@@ -11,8 +11,8 @@ function SearchResults({
   setShowCards,
   isLoggedIn,
   handleDifferentPopup,
-  onSaveArticleClick
-  // onDeleteArticleClick
+  onSaveArticleClick,
+  onDeleteArticleClick
 }) {
 
   const isInHomepage = useContext(CurrentLocationContext);
@@ -50,7 +50,7 @@ function SearchResults({
               handleDifferentPopup={handleDifferentPopup}
               savedArticles={savedArticles}
               onSaveArticleClick={onSaveArticleClick}
-              // onDeleteArticleClick={onDeleteArticleClick}
+              onDeleteArticleClick={onDeleteArticleClick}
             /></li>
           ))}
 

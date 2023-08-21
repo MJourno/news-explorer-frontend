@@ -12,7 +12,7 @@ function Main({
   setSearchKeyword,
   onSearch,
   onSaveArticleClick,
-  // onDeleteArticleClick,
+  onDeleteArticleClick,
   savedArticles,
   savedCardsArray,
   setShowCards,
@@ -22,6 +22,7 @@ function Main({
   handleDifferentPopup,
   isLoading
 }) {
+  
   return (
     <main className="main">
       <SearchForm
@@ -39,7 +40,7 @@ function Main({
           cards={cards}
           isLoggedIn={isLoggedIn}
           handleDifferentPopup={handleDifferentPopup}
-          // onDeleteArticleClick={onDeleteArticleClick}
+          onDeleteArticleClick={onDeleteArticleClick}
         />
       )}
       {isLoading && <Preloader />}

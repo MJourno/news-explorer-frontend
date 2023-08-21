@@ -53,9 +53,9 @@ export function getContent(jwt) {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${jwt}`, // Make sure jwt here is just the token itself
     },
   }).then((res) => {
-    return getResponseData(res)
+    return getResponseData(res);
   });
 }
