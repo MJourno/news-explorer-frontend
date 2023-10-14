@@ -3,11 +3,21 @@ import { CurrentLocationContext } from "../../contexts/CurrentLocationContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from 'react-router-dom';
 
-function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMobileNav }) {
-  
+function Navigation({
+  isLoggedIn,
+  setIsLoginPopupOpen,
+  setIsMobileNavOpen,
+  isMobileNav,
+  onLogOut,
+}) {
+
   const isInHomepage = useContext(CurrentLocationContext);
   const currentUser = useContext(CurrentUserContext);
-  console.log(isInHomepage)
+
+  function logOut() {
+    onLogOut();
+  }
+
 
   return (
     <nav className='navigation'>
@@ -31,7 +41,7 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
                 :
                 ''
             }
-            <button onClick={() => setIsLoginPopupOpen(true)} className="navigation__signin">
+            <button onClick={!isLoggedIn ? () => setIsLoginPopupOpen(true) : logOut} className="navigation__signin">
               {
                 isLoggedIn ?
                   <>
@@ -74,11 +84,11 @@ function Navigation({ isLoggedIn, setIsLoginPopupOpen, setIsMobileNavOpen, isMob
               :
               ''
           }
-          <button onClick={() => setIsLoginPopupOpen(true)} className={`navigation__signin ${!isInHomepage && 'navigation__signin_black'}`}>
+          <button onClick={!isLoggedIn ? () => setIsLoginPopupOpen(true) : logOut} className={`navigation__signin ${!isInHomepage && 'navigation__signin_black'}`}>
             {
               isLoggedIn ?
                 <>
-                  <span>Elise
+                  <span>{currentUser.name}
                     <i className={`navigation__logout-symbol ${!isInHomepage && 'navigation__logout-symbol_dark'}`}
                     />
                   </span>
